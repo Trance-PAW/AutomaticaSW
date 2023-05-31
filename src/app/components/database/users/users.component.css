@@ -1,0 +1,16 @@
+.action-btn {
+    color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+.action-btn:hover {
+    color: white;
+    background-color: #E14D2A;
+}
+
+.custom-input {
+    border: none;
+    border-radius: 0;
+    border-bottom: #E14D2A solid;
+    background-color: transparent;
+}

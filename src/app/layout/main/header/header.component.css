@@ -1,0 +1,49 @@
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
+}
+
+a, .navbar-brand, .btn-header, .btn {
+    font-family: 'Barlow';
+    color: #0F4C75;
+}
+
+.btn-header:active {
+    border-color: white;
+}
+
+.offcanvas-bg {
+    background-color: #0F4C75;
+}
+
+.text-border {
+    position: relative;
+    width: fit-content;
+}
+
+.text-border::after {
+    content: "";
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.1rem;
+    width: 0;
+    transition: 0.5s;
+}
+
+.text-border:hover::after {
+    width: 100%;
+}
+
+.overlay-btn {
+    padding: 0;
+}
+
+.overlay-btn:active {
+    border: none;
+}

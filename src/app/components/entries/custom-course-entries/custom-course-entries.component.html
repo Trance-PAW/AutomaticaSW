@@ -1,0 +1,41 @@
+<div class="row w-100 gy-4 mt-4">
+    <div class="col-lg-5 col-md-12 d-flex flex-column align-items-center justify-content-center">
+        <!-- Alerta de error al no ingresar correctamente el campo -->
+        <ngb-alert #selfClosingAlert *ngIf="errorMessage" type="danger" (closed)="errorMessage = ''" class="w-75 mb-4">{{ errorMessage }}</ngb-alert>
+        <!-- Campo para seleccionar la clase desada -->
+        <form name="course-form" class="w-75" novalidate>
+            <h5 class="fs-5 mb-3">Lista de cursos</h5>
+            <p-autoComplete styleClass="input-autocomplete" name="course" [(ngModel)]="selectedCourse" [suggestions]="filteredCourses" (completeMethod)="filterCourse($event)" field="name" [dropdown]="true" placeholder="Nombre de la clase" [forceSelection]="true">
+                <ng-template let-course pTemplate="item">
+                    <div class="d-flex flex-column">
+                        <span>{{ course.name }}</span>
+                        <span *ngIf="course.professor" style="color: #E14D2A;">{{ course.professor.name }}</span>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+            <div class="d-flex align-items-center justify-content-between">
+                <button class="btn btn-outline-dark action-btn" type="button" (click)="registerClassEntry()">Siguiente</button>
+                <a class="custom-ref text-end" href="/entries/student-entries" (click)="registerGuestClassEntry()">Invitados</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-2 d-none d-lg-block d-xl-block position-relative">
+        <div class="vertical-line position-absolute top-50 start-50 translate-middle h-75"></div>
+    </div>
+    <div class="col-lg-5 col-md-12 d-flex align-items-center justify-content-center">
+        <button class="btn btn-outline-dark action-btn" type="button" (click)="showAddCourse()">+ Agregar curso</button>
+    </div>
+</div>
+<!-- Overlay para agregar un nuevo curso -->
+<p-dialog header="Agregar curso" [(visible)]="displayAddCourse" [modal]="true" styleClass="courses-dialog"
+    [draggable]="false" [resizable]="false">
+    <!-- Alerta de error al no ingresar un campo -->
+    <ngb-alert #selfClosingAlert *ngIf="errorMessage" type="danger" (closed)="errorMessage = ''" class="mb-4">{{ errorMessage }}</ngb-alert>
+    <form class="d-flex flex-column align-content-center justify-content-start w-100">
+        <span>Nombre del curso</span>
+        <input class="custom-input w-100 text-black" type="text" name="name" [(ngModel)]="courseName" />
+        <span class="mt-3">Código del curso</span>
+        <input class="custom-input w-100 text-black" type="text" name="code" [(ngModel)]="courseCode" />
+        <button class="btn btn-outline-dark action-btn mt-4" type="button" (click)="addCourse()">Agregar</button>
+    </form>
+</p-dialog>

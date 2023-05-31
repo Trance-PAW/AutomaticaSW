@@ -1,0 +1,51 @@
+:host ::ng-deep {
+    .input-autocomplete {
+        width: 100%;
+        margin-bottom: 1.25rem;
+        .p-inputtext {
+            font-family: "Barlow";
+            color: #0F4C75;
+            border-radius: 0;
+            border: none;
+            border-bottom: #E14D2A solid;
+            background-color: transparent;
+            font-size: 1.25rem;
+            font-weight: normal;
+            padding: 1px 2px;
+        }
+        .p-inputtext::placeholder {
+            color: #0f4c7557;
+        }
+        .p-button {
+            background-color: transparent;
+            color: #0F4C75;
+            border-radius: 0;
+            border: none;
+            border-bottom: #E14D2A solid;
+            padding: 1px 2px;
+            width: 2rem;
+        }
+        .p-button:focus, .p-inputtext:focus {
+            box-shadow: none;
+        }
+        .p-autocomplete-panel {
+            border-radius: 0;
+            ul li {
+                font-family: "Barlow";
+                color: #0F4C75;
+            }
+            ul .p-highlight {
+                color: #E14D2A;
+                background-color: #0f4c750c;
+            }
+        }
+    }
+    .courses-dialog {
+        width: 400px;
+        max-width: 90vw;
+        background-color: white;
+        .p-dialog-header, .p-dialog-content {
+            color: #0F4C75;
+        }
+    }
+}

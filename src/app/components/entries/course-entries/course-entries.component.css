@@ -1,0 +1,19 @@
+.vertical-line {
+    border-left: #E14D2A solid;
+    border-width: 1px;
+}
+
+.register-class-btn {
+    color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+.register-class-btn:hover {
+    color: white;
+    background-color: #E14D2A;
+}
+
+.custom-ref {
+    color: #E14D2A;
+    text-decoration: none;
+}

@@ -1,0 +1,70 @@
+<nav class="navbar p-4">
+    <div class="d-flex align-items-center justify-content-start">
+        <button class="btn btn-header p-0" (click)="open(drawer)">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <div class="navbar-brand ms-3 d-flex align-items-center justify-content-center">
+            <img src="assets/images/fing_logo.png" alt="Logo" style="width: 2.5rem;"/>
+            <span *ngIf="windowWidth >= 576" class="fs-5 ms-3">FING Labs</span>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-end">
+        <span class="fs-6 m-0 me-1">{{ user.user.name }}</span>
+        <button type="button" class="btn" (click)="userSettings.toggle($event)">
+            <i class="bi bi-person-square fs-4"></i>
+        </button>
+        <p-overlayPanel #userSettings>
+            <ng-template pTemplate>
+                <button type="button" class="btn overlay-btn" (click)="userSettings.toggle($event); logout()">
+                    <i class="bi bi-box-arrow-left fs-6 me-2"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </ng-template>
+        </p-overlayPanel>
+    </div>
+</nav>
+<ng-template #drawer let-offcanvas>
+	<div class="offcanvas-bg offcanvas-header p-5">
+		<button type="button" class="btn btn-drawer p-0" aria-label="Close" (click)="offcanvas.dismiss('Cross click');">
+            <i class="bi bi-list fs-4 text-white"></i>
+        </button>
+	</div>
+	<div class="offcanvas-bg offcanvas-body p-5 pt-0">
+		<div *ngIf="userRole == 'admin'" class="mb-5">
+            <div class="d-flex align-items-top justify-content-between">
+                <span class="text-white fs-5 mb-4">Reportes</span>
+                <i class="bi bi-journal-text fs-5 text-white"></i>
+            </div>
+            <a href="/reports/student-reports">
+                <p class="text-white fs-6 text-border">Alumnos</p>
+            </a>
+            <a href="/reports/professor-reports">
+                <p class="text-white fs-6 text-border">Maestros</p>
+            </a>
+        </div>
+        <div class="mb-5">
+            <div class="d-flex align-items-top justify-content-between">
+                <span class="text-white fs-5 mb-4">Registros</span>
+                <i class="bi bi-box-arrow-in-right fs-5 text-white"></i>
+            </div>
+            <a href="{{entriesRouter}}">
+                <p class="text-white fs-6 text-border">Entradas</p>
+            </a>
+            <a *ngIf="userRole == 'admin'" href="/inventory">
+                <p class="text-white fs-6 text-border">Inventario</p>
+            </a>
+        </div>
+        <div *ngIf="userRole == 'admin'" class="mb-5">
+            <div class="d-flex align-items-top justify-content-between">
+                <span class="text-white fs-5 mb-4">Datos</span>
+                <i class="bi bi-database-add fs-5 text-white"></i>
+            </div>
+            <a href="/database/file-upload">
+                <p class="text-white fs-6 text-border">Archivos</p>
+            </a>
+            <a href="/database/users">
+                <p class="text-white fs-6 text-border">Usuarios</p>
+            </a>
+        </div>
+	</div>
+</ng-template>

@@ -1,0 +1,59 @@
+<div class="w-100">
+    <h4 class="mb-5">Reportes de profesores</h4>
+    <!-- Alerta de error al no ingresar correctamente el campo -->
+    <ngb-alert #selfClosingAlert *ngIf="errorMessage" type="danger" (closed)="errorMessage = ''" class="mb-4">{{ errorMessage }}</ngb-alert>
+    <div class="row row-cols-1 row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-5">
+        <!-- Campo para ingresar el laboratorio deseado -->
+        <div class="col">
+            <h5 class="fs-5 mb-3 w-100">Laboratorio</h5>
+            <p-autoComplete styleClass="input-autocomplete" [(ngModel)]="selectedLab" [suggestions]="filteredLabs" (completeMethod)="filterLab($event)" [dropdown]="true" placeholder="Nombre del laboratorio" [forceSelection]="true"></p-autoComplete>
+        </div>
+        <!-- Campo para ingresar el profesor deseado -->
+        <div class="col">
+            <h5 class="fs-5 mb-3 w-100">Profesor</h5>
+            <input class="input-typeahead w-100 fs-5 mb-4" type="number" placeholder="ID del profesor" name="professor" [(ngModel)]="professorId"/>
+        </div>
+        <!-- Campo para seleccionar la clase desada -->
+        <div class="col">
+            <h5 class="fs-5 mb-3 w-100">Clase</h5>
+            <p-autoComplete styleClass="input-autocomplete" [(ngModel)]="selectedCourse" [suggestions]="filteredCourses" (completeMethod)="filterCourse($event)" field="name" [dropdown]="true" placeholder="Nombre de la clase" [forceSelection]="true">
+                <ng-template let-course pTemplate="item">
+                    <div class="d-flex flex-column">
+                        <span>{{ course.name }}</span>
+                        <span *ngIf="course.professor" style="color: #E14D2A;">{{ course.professor.name }}</span>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+        </div>
+        <!-- Campo para seleccionar el rango de fechas -->
+        <div class="col">
+            <h5 class="fs-5 mb-3 w-100">Rango de fechas</h5>
+            <p-calendar styleClass="custom-calendar" placeholder="Rango de fechas" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" [showIcon]="true" [numberOfMonths]="2" appendTo="body"></p-calendar>
+        </div>
+    </div>
+    <div class="w-100 d-flex align-items-center justify-content-end mt-4 mb-5">
+        <button *ngIf="professorReports.length > 0" id="pdf-btn" type="button" class="btn btn-dark me-3" (click)="generatePdfReport()">Guardar PDF</button>
+        <button id="generate-btn" type="button" class="btn btn-dark" (click)="getProfessorReports()">Generar</button>
+    </div>
+    <!-- Tabla que muestra el resultado al generar una consulta con los campos ingresados -->
+    <p-table id="reportTable" *ngIf="professorReports.length > 0" [value]="professorReports" styleClass="report-table">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">Matrícula <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="group">Laboratorio <p-sortIcon field="lab"></p-sortIcon></th>
+                <th pSortableColumn="course">Clase <p-sortIcon field="course"></p-sortIcon></th>
+                <th pSortableColumn="date">Fecha <p-sortIcon field="date"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-entry>
+            <tr>
+                <td>{{entry.professor._id}}</td>
+                <td>{{entry.professor.name}}</td>
+                <td>{{entry.lab}}</td>
+                <td>{{entry.course.name}}</td>
+                <td>{{entry.date}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

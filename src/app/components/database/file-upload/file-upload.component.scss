@@ -1,0 +1,35 @@
+:host ::ng-deep {
+    .file-upload.p-fileupload {
+        .p-fileupload-buttonbar {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin-bottom: 1.50rem;
+            .p-ripple, p-button button {
+                margin: 0.75rem;
+                margin-bottom: 0;
+                color: white !important;
+                background-color: #0F4C75;
+                border-color: #0F4C75;
+            }
+            .p-ripple:hover, p-button button:hover {
+                background-color: #0b3855;
+                border-color: #0F4C75;
+            }
+        }
+        .p-fileupload-content {
+            border: 0;
+            padding: 0;
+            padding-top: 1.5rem;
+            p-progressbar {
+                .p-progressbar {
+                    background-color: #E14D2A;
+                    border-radius: 0;
+                    height: 2px;
+                    width: 75%;
+                    left: 12.5%;
+                }
+            }
+        }
+    }
+}

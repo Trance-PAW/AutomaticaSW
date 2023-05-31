@@ -1,0 +1,62 @@
+.vertical-line {
+    border-left: #E14D2A solid;
+    border-width: 1px;
+}
+
+.vertical-line::after {
+    content: "ó";
+    color: #0F4C75;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.custom-ref {
+    color: #E14D2A;
+    text-decoration: none;
+}
+
+.input-course {
+    border: none;
+    border-radius: 0;
+    border-bottom: #E14D2A solid;
+    background-color: transparent;
+    font-size: 1.25rem;
+    font-weight: normal;
+    padding: 1px 2px;
+    margin-bottom: 1.25rem;
+}
+
+.input-course::placeholder {
+    color: #0f4c7557;
+}
+
+.dark-blue-btn {
+    color: white !important;
+    background-color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+.dark-blue-btn:hover {
+    background-color: #0b3855;
+    border-color: #0F4C75;
+}
+
+.custom-input {
+    border: none;
+    border-radius: 0;
+    border-bottom: #E14D2A solid;
+    background-color: transparent;
+}
+
+.action-btn {
+    color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+.action-btn:hover {
+    color: white;
+    background-color: #E14D2A;
+}

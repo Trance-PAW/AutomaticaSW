@@ -1,0 +1,39 @@
+.progress-bar {
+    background-color: #E14D2A;
+}
+
+#course-btn, #student-btn {
+    pointer-events: none;
+}
+
+#course-btn, #student-btn {
+    background-color: white;
+    color: #0F4C75;
+    border-color: #0F4C75;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#course-btn-label, #student-btn-label {
+    color: #0F4C75;
+    top: 140%;
+    transform: translate(-50%, -50%);
+}
+
+#course-btn, #course-btn-label {
+    left: 33.33%;
+}
+
+#student-btn, #student-btn-label {
+    left: 66.66%;
+}
+
+#new-course-btn {
+    color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+#new-course-btn:hover {
+    color: white;
+    background-color: #E14D2A;
+}

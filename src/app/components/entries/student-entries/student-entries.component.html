@@ -1,0 +1,58 @@
+<div class="w-100">
+    <div class="row w-100 gy-4 mt-4">
+        <div class="col-lg-5 col-md-12 d-flex flex-column align-items-center justify-content-center">
+            <!-- Alerta de confirmación o error al registrar alumno -->
+            <ngb-alert #selfClosingAlert *ngIf="alertMessage.message" class="alert-message" type="{{ alertMessage.type }}" (closed)="alertMessage.message= ''" class="w-75 mb-4">{{ alertMessage.message }}</ngb-alert>
+            <!-- Clase actual -->
+            <div class="w-75">
+                <h4 class="fs-5">{{ currentCourse.name }}</h4>
+                <h5 *ngIf="currentCourse.professor" class="mb-4 fs-5">{{ currentCourse.professor.name }}</h5>
+            </div>
+            <!-- Campo para ingresar la matricula del alumno -->
+            <form name="professor-form" class="w-75" novalidate>
+                <p class="fs-5 mb-1">Alumno</p>
+                <input class="input-typeahead w-100 fs-5 mb-4" type="text" placeholder="Ingrese la matricula del alumno" name="student" [(ngModel)]="studentId" (keyup.enter)="registerStudentEntry()"/>
+                <button id="register-class-btn" class="btn btn-outline-dark" type="button" (click)="registerStudentEntry()">Registrar</button>
+            </form>
+        </div>
+        <div class="col-lg-2 d-none d-lg-block d-xl-block position-relative">
+            <div class="vertical-line position-absolute top-50 start-50 translate-middle h-75"></div>
+        </div>
+        <div class="col-lg-5 col-md-12 d-flex align-items-center justify-content-center">
+            <div id="qr-scanner" class="border rounded w-75" style="overflow: hidden;">
+                <zxing-scanner
+                    [enable]="scannerEnabled"
+                    [device]="myDevice"
+                    (camerasFound)="camerasFoundHandler($event)"
+                    (scanSuccess)="scanSuccessHandler($event)"
+                ></zxing-scanner>
+                <div class="d-flex align-items-start justify-content-center m-2">
+                    <p class="fs-6 pe-1">Camara:</p>
+                    <select class="fs-6" #selectList (change)="selectCamera(selectList.value)">
+                        <option *ngFor="let camera of cameras" value={{camera.label}}>{{ camera.label }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tabla que muestra el resultado al generar una consulta con los campos ingresados -->
+    <p-table *ngIf="registeredStudents.length > 0" [value]="registeredStudents" [scrollable]="true" scrollHeight="350px" [virtualScroll]="true" [virtualScrollItemSize]="46" sortField="date" [sortOrder]="-1" styleClass="entries-table">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">Matricula <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="course">Clase <p-sortIcon field="course"></p-sortIcon></th>
+                <th pSortableColumn="date">Fecha <p-sortIcon field="date"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+            <tr>
+                <td>{{student.studentId}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.course}}</td>
+                <td>{{student.date}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div style="height: 3rem; width: 100%; clear: both;"></div>
+</div>

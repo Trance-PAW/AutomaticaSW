@@ -1,0 +1,42 @@
+<div class="w-100">
+    <span class="fs-4 mb-5">Subir archivos</span>
+    <div class="row w-100 gy-4 mt-4">
+        <div class="col-lg-5 col-md-12 d-flex flex-column align-items-center justify-content-center">
+             <!-- Alerta al tratar de actualizar la base de datos -->
+            <p-messages></p-messages>
+            <!-- Botones para cargar, subir y eliminar archivo -->
+            <p-fileUpload name="fileUpload" styleClass="file-upload" #fileUpload accept=".xls,.xlsx"
+                [customUpload]="true"
+                [maxFileSize]="10000000"
+                [fileLimit]="1"
+                (onSelect)="getUploadedFile($event)" 
+                (uploadHandler)="onUpload(fileUpload)">
+                <!-- Template personalizado para que se muestre la información del archivo -->
+                <ng-template let-file pTemplate="file" class="file-template">
+                    <div class="row row-cols-4 text-center">
+                        <div class="col d-flex align-items-center justify-content-center">
+                            <i class="bi bi-filetype-xlsx fs-4"></i>
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-center fs-6">
+                            {{ file.name }}
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-center fs-6">
+                            {{ (file.size / 1000000).toFixed(2) }} MB
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-dark cancel-file-btn" (click)="fileUpload.clear()">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-fileUpload>
+        </div>
+        <div class="col-lg-2 d-none d-lg-block d-xl-block position-relative">
+            <div class="vertical-line position-absolute top-50 start-50 translate-middle h-75"></div>
+        </div>
+        <div class="col-lg-5 col-md-12 d-flex align-items-center justify-content-center">
+            <img alt="Clases vector" src="assets/images/files_vector.jpg" class="w-75"/>
+        </div>
+    </div>
+</div>

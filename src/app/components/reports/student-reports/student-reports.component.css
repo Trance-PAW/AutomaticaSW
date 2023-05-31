@@ -1,0 +1,35 @@
+.input-typeahead {
+    font-family: "Barlow";
+    color: #0F4C75;
+    border: none;
+    border-radius: 0;
+    border-bottom: #E14D2A solid;
+    background-color: transparent;
+}
+
+.input-typeahead::-webkit-outer-spin-button, .input-typeahead::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-typeahead {
+    -webkit-appearance: textfield
+}
+
+.input-typeahead:focus {
+    outline: none;
+}
+
+.input-typeahead::placeholder {
+    color: #0f4c7557;
+}
+
+#pdf-btn {
+    background-color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+#generate-btn {
+    background-color: #E14D2A;
+    border-color: #0F4C75;
+}

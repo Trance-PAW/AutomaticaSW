@@ -1,0 +1,24 @@
+:host ::ng-deep {
+    .entries-table {
+        margin-top: 1.5rem;
+        .p-datatable-thead {
+            border-bottom: #E14D2A solid;
+            background-color: white !important;
+            tr th {
+                background-color: transparent;
+                color: #0F4C75;
+                i {
+                    color: #0F4C75;
+                }
+            }
+        }
+        .p-datatable-tbody {
+            tr {
+                border-bottom: #0F4C7550 solid;
+                td {
+                    color: #0F4C75;
+                }
+            }
+        }
+    }
+}

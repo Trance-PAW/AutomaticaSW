@@ -1,0 +1,53 @@
+h5 {
+    color: #E14D2A;
+}
+
+.input-typeahead {
+    font-family: "Barlow";
+    color: #0F4C75;
+    border: none;
+    border-radius: 0;
+    border-bottom: #E14D2A solid;
+    background-color: transparent;
+}
+
+.input-typeahead::-webkit-outer-spin-button, .input-typeahead::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-typeahead {
+    -webkit-appearance: textfield
+}
+
+.input-typeahead:focus {
+    outline: none;
+}
+
+.input-typeahead::placeholder {
+    color: #0f4c7557;
+}
+
+.vertical-line {
+    border-left: #E14D2A solid;
+    border-width: 1px;
+}
+
+.alert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50, 50);
+    z-index: 1000;
+    margin: 1.5rem;
+}
+
+#register-class-btn {
+    color: #0F4C75;
+    border-color: #0F4C75;
+}
+
+#register-class-btn:hover {
+    color: white;
+    background-color: #E14D2A;
+}
