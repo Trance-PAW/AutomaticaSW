@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Barlow";
+    src: local("Barlow"), url(./assets/fonts/Barlow-Regular.ttf) format("truetype");
+}
+
+html, body { 
+    height: 100%;
+    overflow: hidden;
+}
+
+body, body .p-component {
+    font-family: 'Barlow', sans-serif !important;
+    color: #0F4C75 !important;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.offcanvas {
+    background-color: #0F4C75;
+}
+
+/* Width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 2rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00000050; 
+    border-radius: 2rem;
+    
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #00000080;
+}
